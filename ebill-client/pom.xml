@@ -13,9 +13,9 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ebill-client</name>
 	<properties>
-	    <maven.compiler.target>11</maven.compiler.target>
-	    <maven.compiler.source>11</maven.compiler.source>
-	</properties>	
+		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.source>11</maven.compiler.source>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
@@ -27,10 +27,28 @@
 			<artifactId>javax.jws-api</artifactId>
 			<version>1.1</version>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<annotationProcessorPaths>
+						<path>
+							<groupId>org.projectlombok</groupId>
+							<artifactId>lombok</artifactId>
+							<version>1.18.22</version>
+						</path>
+					</annotationProcessorPaths>
+				</configuration>
+			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>jaxws-maven-plugin</artifactId>
@@ -69,14 +87,14 @@
 						<configuration>
 							<packageName>ch.postfinance.ebill.schema.registration</packageName>
 							<extension>true</extension>
-			                <sources>
-			                    <source>src/main/xsd/CustomerRegistrationMessage_V2.0.xsd</source>
-			                </sources>
+							<sources>
+								<source>src/main/xsd/CustomerRegistrationMessage_V2.0.xsd</source>
+							</sources>
 							<outputDirectory>
 								${project.build.directory}/generated-sources
 							</outputDirectory>
 							<clearOutputDir>false</clearOutputDir>
-						</configuration>						
+						</configuration>
 					</execution>
 					<execution>
 						<id>protocol</id>
@@ -86,14 +104,14 @@
 						<configuration>
 							<packageName>ch.postfinance.ebill.schema.protocol</packageName>
 							<extension>true</extension>
-			                <sources>
-			                    <source>src/main/xsd/ProcessProtocol.xsd</source>
-			                </sources>
+							<sources>
+								<source>src/main/xsd/ProcessProtocol.xsd</source>
+							</sources>
 							<outputDirectory>
 								${project.build.directory}/generated-sources
 							</outputDirectory>
 							<clearOutputDir>false</clearOutputDir>
-						</configuration>						
+						</configuration>
 					</execution>
 					<execution>
 						<id>ybinvoice</id>
@@ -103,14 +121,14 @@
 						<configuration>
 							<packageName>ch.postfinance.ebill.schema.ybinvoice</packageName>
 							<extension>true</extension>
-			                <sources>
-			                    <source>src/main/xsd/ybInvoice_V2.0.4.xsd</source>
-			                </sources>
+							<sources>
+								<source>src/main/xsd/ybInvoice_V2.0.4.xsd</source>
+							</sources>
 							<outputDirectory>
 								${project.build.directory}/generated-sources
 							</outputDirectory>
 							<clearOutputDir>false</clearOutputDir>
-						</configuration>						
+						</configuration>
 					</execution>
 					<execution>
 						<id>rgxml</id>
@@ -120,14 +138,14 @@
 						<configuration>
 							<packageName>ch.postfinance.ebill.schema.rgxml</packageName>
 							<extension>true</extension>
-			                <sources>
-			                    <source>src/main/xsd/RGXML_V2.0.4.xsd</source>
-			                </sources>
+							<sources>
+								<source>src/main/xsd/RGXML_V2.0.4.xsd</source>
+							</sources>
 							<outputDirectory>
 								${project.build.directory}/generated-sources
 							</outputDirectory>
 							<clearOutputDir>false</clearOutputDir>
-						</configuration>						
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema" Type="Response" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="C:\Users\benzth\Desktop\ProcessProtocol.xsd">
+	<Header>
+		<From>IPEC</From>
+		<To>Rechnungsempfänger</To>
+		<UseCase>GetProcessProtocol</UseCase>
+		<SessionID>1</SessionID>
+		<Version>1.1</Version>
+		<Status>0</Status>
+	</Header>
+	<Body>
+		<BillerID>41101000000111111</BillerID>
+		<DeliveryDate date="20120522">
+			<NumberBills>5</NumberBills>
+			<OK_Signed>3</OK_Signed>
+			<OK_Result>
+				<Signed>3</Signed>
+				<Bill>
+					<TransactionID>TID03201207060001-20120602</TransactionID>
+				</Bill>
+				<Bill>
+					<TransactionID>TID03201207060002-20120602</TransactionID>
+				</Bill>
+				<Bill>
+					<TransactionID>TID03201207060003-20120602</TransactionID>
+				</Bill>
+			</OK_Result>
+			<NOK_Result>
+				<NotSigned>2</NotSigned>
+				<Bill>
+					<TransactionID>T456654</TransactionID>
+					<EBillAccountID>41010643600000007</EBillAccountID>
+					<ESRReference>11220423044000010000000004</ESRReference>
+					<TotalAmount>105.50</TotalAmount>
+					<ReasonCode>03</ReasonCode>
+					<ReasonText>EBillAccountID incorrect format (syntax)</ReasonText>
+					<Date>2012-06-12</Date>
+				</Bill>
+				<Bill>
+					<TransactionID>T852258</TransactionID>
+					<EBillAccountID>41010643600000008</EBillAccountID>
+					<ESRReference>11220423044000010000000005</ESRReference>
+					<TotalAmount>110.10</TotalAmount>
+					<ReasonCode>08</ReasonCode>
+					<ReasonText>ESRCustomerNr check failed</ReasonText>
+					<Date>2012-06-12</Date>
+				</Bill>
+			</NOK_Result>
+		</DeliveryDate>
+		<RejectedBills>
+			<NumberBills>1</NumberBills>
+			<Bill>
+				<TransactionID>T123456</TransactionID>
+				<EBillAccountID>41010643600000000</EBillAccountID>
+				<ESRReference>11220423044000010000000000</ESRReference>
+				<TotalAmount>100.00</TotalAmount>
+				<ReasonCode>25</ReasonCode>
+				<ReasonText>eBill Rejected by Customer / Payer</ReasonText>
+				<Date>2012-06-12</Date>
+			</Bill>
+		</RejectedBills>
+	</Body>
+</Envelope>
