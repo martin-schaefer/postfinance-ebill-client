@@ -56,6 +56,7 @@
 					<args>
 						<arg>-B-XautoNameResolution</arg>
 					</args>
+					<xjcArgs><xjcArg></xjcArg></xjcArgs>
 					<packageName>ch.postfinance.ebill.webservice</packageName>
 					<sourceDestDir>
 						${project.build.directory}/generated-sources

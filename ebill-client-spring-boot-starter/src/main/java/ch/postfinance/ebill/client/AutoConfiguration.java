@@ -1,5 +1,7 @@
 package ch.postfinance.ebill.client;
 
+import static java.util.Collections.singletonList;
+
 import javax.xml.soap.MessageFactory;
 import javax.xml.soap.SOAPConstants;
 
@@ -44,13 +46,13 @@ public class AutoConfiguration {
 //		HttpComponentsMessageSender httpComponentsMessageSender = new HttpComponentsMessageSender();
 //		httpComponentsMessageSender.setCredentials(new UsernamePasswordCredentials("user", "pw"));
 //		eBillClient.setMessageSender(httpComponentsMessageSender);
-		Wss4jSecurityInterceptor w = new Wss4jSecurityInterceptor();
-		w.setSecurementActions("UsernameToken");
-		w.setSecurementUsername("someuser");
-		w.setSecurementPassword("somepw");
-		ClientInterceptor[] newInterceptors = new ClientInterceptor[1];
-		newInterceptors[0] = w;
-		eBillClient.setInterceptors(newInterceptors);
+		// https://docs.spring.io/spring-ws/site/reference/html/security.html 7.3.3.2.
+		// Adding Username Token
+		Wss4jSecurityInterceptor wss4jSecurityInterceptor = new Wss4jSecurityInterceptor();
+		wss4jSecurityInterceptor.setSecurementActions("UsernameToken");
+		wss4jSecurityInterceptor.setSecurementUsername("someuser");
+		wss4jSecurityInterceptor.setSecurementPassword("somepw");
+		eBillClient.setInterceptors(singletonList(wss4jSecurityInterceptor).toArray(new ClientInterceptor[1]));
 		return eBillClient;
 	}
 
