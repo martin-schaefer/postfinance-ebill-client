@@ -13,7 +13,7 @@ import lombok.NonNull;
 import lombok.SneakyThrows;
 
 /**
- * Marshaller and unmarshaller for schema objects
+ * Generic marshaller and unmarshaller for schema objects
  * 
  * @author Martin Schäfer
  *
@@ -93,7 +93,7 @@ public abstract class SchemaMarshaller<T> {
 	 * @return The schema object
 	 */
 	@SneakyThrows
-	public T unmarshall(InputStream inputStream) {
+	public T unmarshall(@NonNull InputStream inputStream) {
 		return (T) unmarshaller.unmarshal(inputStream);
 	}
 }

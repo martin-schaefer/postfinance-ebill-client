@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CustomerRegistrationMessage xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <CustomerRegistration>
+    <SubscriptionType>1</SubscriptionType>
+    <BillerID>41100000000000050</BillerID>
+    <CustomerID>41100000000000001</CustomerID>
+    <RecipientType>PRIVATE</RecipientType>
+    <Language>de</Language>
+    <CustomerNameAddress>
+      <NamePrivate>
+        <GivenName>Hans</GivenName>
+        <FamilyName>Muster</FamilyName>
+      </NamePrivate>
+      <Address>Musterstrasse 1</Address>
+      <Zip>3000</Zip>
+      <City>Bern</City>
+      <Country>AF</Country>
+    </CustomerNameAddress>
+    <Email>hans.muster@mail.ch</Email>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">BIRTHDATE</TechnicalID>
+      <Value>10.05.1958</Value>
+    </CustomerSubscriptionFormField>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">CUSTOMERNBR</TechnicalID>
+      <Value>X</Value>
+    </CustomerSubscriptionFormField>
+  </CustomerRegistration>
+  <CustomerRegistration>
+    <SubscriptionType>1</SubscriptionType>
+    <BillerID>41100000000000050</BillerID>
+    <CustomerID>41100000000000002</CustomerID>
+    <RecipientType>COMPANY</RecipientType>
+    <Language>fr</Language>
+    <CustomerNameAddress>
+      <NameCompany>
+        <CompanyName>Example SA</CompanyName>
+      </NameCompany>
+      <Address>Strasse 1</Address>
+      <Zip>3000</Zip>
+      <City>Bern</City>
+      <Country>AF</Country>
+    </CustomerNameAddress>
+    <Email>info@example.ch</Email>
+    <UIDHR>CHE123456789</UIDHR>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">BIRTHDATE</TechnicalID>
+      <Value>10.05.1958</Value>
+    </CustomerSubscriptionFormField>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">CUSTOMERNBR</TechnicalID>
+      <Value>X</Value>
+    </CustomerSubscriptionFormField>
+  </CustomerRegistration>
+  <CustomerRegistration>
+    <SubscriptionType>2</SubscriptionType>
+    <BillerID>41100000000000050</BillerID>
+    <CustomerID>41100000000000003</CustomerID>
+    <RecipientType>PRIVATE</RecipientType>
+    <Language>it</Language>
+    <CustomerNameAddress>
+      <NamePrivate>
+        <GivenName>Giovanni</GivenName>
+        <FamilyName>Esempio</FamilyName>
+      </NamePrivate>
+      <Address>Strasse 2</Address>
+      <Zip>3001</Zip>
+      <City>Bern</City>
+      <Country>AF</Country>
+    </CustomerNameAddress>
+    <Email>giovanni.esempio@mail.ch</Email>
+    <CreditAccount xsi:type="xsd:string">01-001234-1</CreditAccount>
+    <CreditorReference xsi:type="xsd:string">123456789012345</CreditorReference>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">BIRTHDATE</TechnicalID>
+      <Value />
+    </CustomerSubscriptionFormField>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">CUSTOMERNBR</TechnicalID>
+      <Value />
+    </CustomerSubscriptionFormField>
+  </CustomerRegistration>
+  <CustomerRegistration>
+    <SubscriptionType>2</SubscriptionType>
+    <BillerID>41100000000000050</BillerID>
+    <CustomerID>41100000000000004</CustomerID>
+    <RecipientType>PRIVATE</RecipientType>
+    <Language>en</Language>
+    <CustomerNameAddress>
+      <NamePrivate>
+        <GivenName>John</GivenName>
+        <FamilyName>Example</FamilyName>
+      </NamePrivate>
+      <Address>Strasse 3</Address>
+      <Zip>3002</Zip>
+      <City>Bern</City>
+      <Country>AF</Country>
+    </CustomerNameAddress>
+    <Email>john.example@mail.ch</Email>
+    <CreditAccount xsi:type="xsd:string">CH5130000001250090342</CreditAccount>
+    <CreditorReference xsi:type="xsd:string">123456789012345678901234567</CreditorReference>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">BIRTHDATE</TechnicalID>
+      <Value />
+    </CustomerSubscriptionFormField>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">CUSTOMERNBR</TechnicalID>
+      <Value />
+    </CustomerSubscriptionFormField>
+  </CustomerRegistration>
+  <CustomerRegistration>
+    <SubscriptionType>2</SubscriptionType>
+    <BillerID>41100000000000050</BillerID>
+    <CustomerID>41100000000000005</CustomerID>
+    <RecipientType>PRIVATE</RecipientType>
+    <Language>de</Language>
+    <CustomerNameAddress>
+      <NamePrivate>
+        <GivenName>Karin</GivenName>
+        <FamilyName>Beispiel</FamilyName>
+      </NamePrivate>
+      <Address>Strasse 4</Address>
+      <Zip>3003</Zip>
+      <City>Bern</City>
+      <Country>AF</Country>
+    </CustomerNameAddress>
+    <Email>karin.beispiel@mail.ch</Email>
+    <CreditAccount xsi:type="xsd:string">CH0309000000250090342</CreditAccount>
+    <CreditorReference xsi:type="xsd:string">RF20200226000ALPHA1234567</CreditorReference>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">BIRTHDATE</TechnicalID>
+      <Value />
+    </CustomerSubscriptionFormField>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">CUSTOMERNBR</TechnicalID>
+      <Value />
+    </CustomerSubscriptionFormField>
+  </CustomerRegistration>
+  <CustomerRegistration>
+    <SubscriptionType>3</SubscriptionType>
+    <BillerID>41100000000000050</BillerID>
+    <CustomerID>41100000000000006</CustomerID>
+    <RecipientType>PRIVATE</RecipientType>
+    <Language>de</Language>
+    <CustomerNameAddress>
+      <NamePrivate>
+        <GivenName>Kurt</GivenName>
+        <FamilyName>Anders</FamilyName>
+      </NamePrivate>
+      <Address>Strasse 5</Address>
+      <Zip>3004</Zip>
+      <City>Bern</City>
+      <Country>AF</Country>
+    </CustomerNameAddress>
+    <Email>kurt.anders@mail.ch</Email>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">BIRTHDATE</TechnicalID>
+      <Value />
+    </CustomerSubscriptionFormField>
+    <CustomerSubscriptionFormField>
+      <TechnicalID xsi:type="xsd:string">CUSTOMERNBR</TechnicalID>
+      <Value />
+    </CustomerSubscriptionFormField>
+  </CustomerRegistration>
+</CustomerRegistrationMessage>
