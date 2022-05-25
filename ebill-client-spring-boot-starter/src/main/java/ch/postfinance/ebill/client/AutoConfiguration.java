@@ -1,59 +1,55 @@
 package ch.postfinance.ebill.client;
 
-import static java.util.Collections.singletonList;
-
-import javax.xml.soap.MessageFactory;
-import javax.xml.soap.SOAPConstants;
-
+import b2bservice.ebill.swisspost.ch.B2BService;
+import b2bservice.ebill.swisspost.ch.B2BService_Service;
+import ch.postfinance.ebill.schema.processprotocol.ProcessProtocolMarshaller;
+import ch.postfinance.ebill.schema.registration.RegistrationMarshaller;
+import ch.postfinance.ebill.schema.yellowbill.YellowBillInvoiceMarshaller;
+import lombok.NonNull;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.oxm.jaxb.Jaxb2Marshaller;
-import org.springframework.ws.client.support.interceptor.ClientInterceptor;
-import org.springframework.ws.soap.saaj.SaajSoapMessageFactory;
-import org.springframework.ws.soap.security.wss4j2.Wss4jSecurityInterceptor;
 
-import ch.postfinance.ebill.webservice.B2BService;
-import lombok.NonNull;
-import lombok.SneakyThrows;
+import javax.xml.ws.BindingProvider;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Map;
 
 @Configuration
 public class AutoConfiguration {
 
-	@Bean
-	@ConfigurationProperties(prefix = "ebill.client")
-	public EBillClientProperties eBillClientProperties() {
-		return new EBillClientProperties();
-	}
+    @Value("#{systemEnvironment['postFiUsername']}")
+    private String postFiUsername;
+    @Value("#{systemEnvironment['postFiPassword']}")
+    private String postFiPassword;
 
-	@Bean
-	public Jaxb2Marshaller marshaller() {
-		Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
-		marshaller.setContextPath(B2BService.class.getPackageName());
-		return marshaller;
-	}
+    @Bean
+    @ConfigurationProperties(prefix = "ebill.client")
+    public EBillClientProperties eBillClientProperties() {
+        EBillClientProperties properties = new EBillClientProperties();
+        properties.setUserName(postFiUsername);
+        properties.setPassWord(postFiPassword);
+        return properties;
+    }
 
-	@Bean
-	@SneakyThrows
-	public EBillClient eBillClient(@NonNull EBillClientProperties eBillClientProperties, @NonNull Jaxb2Marshaller marshaller) {
-		EBillClientImpl eBillClient = new EBillClientImpl();
-		eBillClient.setDefaultUri(eBillClientProperties.getUri());
-		eBillClient.setMarshaller(marshaller);
-		eBillClient.setUnmarshaller(marshaller);
-		MessageFactory msgFactory = MessageFactory.newInstance(SOAPConstants.SOAP_1_2_PROTOCOL);
-		SaajSoapMessageFactory newSoapMessageFactory = new SaajSoapMessageFactory(msgFactory);
-		eBillClient.setMessageFactory(newSoapMessageFactory);
-//		HttpComponentsMessageSender httpComponentsMessageSender = new HttpComponentsMessageSender();
-//		httpComponentsMessageSender.setCredentials(new UsernamePasswordCredentials("user", "pw"));
-//		eBillClient.setMessageSender(httpComponentsMessageSender);
-		// https://docs.spring.io/spring-ws/site/reference/html/security.html 7.3.3.2.
-		// Adding Username Token
-		Wss4jSecurityInterceptor wss4jSecurityInterceptor = new Wss4jSecurityInterceptor();
-		wss4jSecurityInterceptor.setSecurementActions("UsernameToken");
-		wss4jSecurityInterceptor.setSecurementUsername("someuser");
-		wss4jSecurityInterceptor.setSecurementPassword("somepw");
-		eBillClient.setInterceptors(singletonList(wss4jSecurityInterceptor).toArray(new ClientInterceptor[1]));
-		return eBillClient;
-	}
+    @Bean
+    public Jaxb2Marshaller marshaller() {
+        Jaxb2Marshaller marshaller = new Jaxb2Marshaller();
+        marshaller.setContextPath(B2BService.class.getPackageName());
+        return marshaller;
+    }
 
+    @Bean
+    public EBillClient eBillClient(@NonNull EBillClientProperties eBillClientProperties) throws MalformedURLException {
+
+        B2BService_Service service = new B2BService_Service(new URL(eBillClientProperties.getUri()), B2BService_Service.SERVICE);
+        B2BService port = service.getUserNamePassword();
+
+        Map<String, Object> requestCtx = ((BindingProvider)port).getRequestContext();
+        requestCtx.put("ws-security.username", eBillClientProperties.getUserName());
+        requestCtx.put("ws-security.password", eBillClientProperties.getPassWord());
+        return new EBillClientImpl(port, new RegistrationMarshaller(), new ProcessProtocolMarshaller(), new YellowBillInvoiceMarshaller());
+    }
 }

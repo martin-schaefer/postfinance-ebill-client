@@ -1,6 +1,5 @@
 package ch.postfinance.ebill.schema.marshaller;
 
-import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -8,6 +7,7 @@ import java.io.Writer;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.stream.StreamSource;
 
 import lombok.NonNull;
 import lombok.SneakyThrows;
@@ -89,11 +89,11 @@ public abstract class SchemaMarshaller<T> {
 	 * Unmarshal from XML read from the given InputStream and return it as schema
 	 * object.
 	 * 
-	 * @param inputStream
+	 * @param source
 	 * @return The schema object
 	 */
 	@SneakyThrows
-	public T unmarshall(@NonNull InputStream inputStream) {
-		return (T) unmarshaller.unmarshal(inputStream);
+	public T unmarshal(@NonNull StreamSource source) {
+		return (T) unmarshaller.unmarshal(source);
 	}
 }
