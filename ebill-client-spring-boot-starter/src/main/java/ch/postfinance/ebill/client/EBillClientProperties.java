@@ -16,4 +16,9 @@ public class EBillClientProperties {
 	@NotBlank
 	private String uri;
 
+	@NotBlank
+	private String userName;
+
+	@NotBlank
+	private String passWord;
 }
