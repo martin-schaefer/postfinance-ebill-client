@@ -1,27 +1,28 @@
 package ch.postfinance.ebill.client;
 
-import b2bservice.ebill.swisspost.ch.B2BService;
-import ch.postfinance.ebill.schema.marshaller.SchemaMarshaller;
 import org.springframework.ws.client.core.support.WebServiceGatewaySupport;
 
+import b2bservice.ebill.swisspost.ch.B2BService;
+import ch.postfinance.ebill.schema.processprotocol.ProcessProtocolMarshaller;
+import ch.postfinance.ebill.schema.registration.RegistrationMarshaller;
+import ch.postfinance.ebill.schema.yellowbill.YellowBillInvoiceMarshaller;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
 public class EBillClientImpl extends WebServiceGatewaySupport implements EBillClient {
 
-    private final B2BService b2BService;
-    private final SchemaMarshaller registrationMarshaller;
-    private final SchemaMarshaller processProtocoMarshaller;
-    private final SchemaMarshaller yellowBillInvoiceMarshaller;
+	@NonNull
+	private final B2BService b2BService;
+	@NonNull
+	private final RegistrationMarshaller registrationMarshaller;
+	@NonNull
+	private final ProcessProtocolMarshaller processProtocoMarshaller;
+	@NonNull
+	private final YellowBillInvoiceMarshaller yellowBillInvoiceMarshaller;
 
-    public EBillClientImpl(B2BService b2BService, SchemaMarshaller registrationMarshaller,
-                           SchemaMarshaller processProtocoMarshaller, SchemaMarshaller yellowBillInvoiceMarshaller) {
-        this.b2BService = b2BService;
-        this.registrationMarshaller = registrationMarshaller;
-        this.processProtocoMarshaller = processProtocoMarshaller;
-        this.yellowBillInvoiceMarshaller = yellowBillInvoiceMarshaller;
-    }
-
-    @Override
-    public String executePing(String billerID) {
-        return b2BService.executePing(billerID, null, null, null);
-    }
+	@Override
+	public String executePing(String billerID) {
+		return b2BService.executePing(billerID, null, null, null);
+	}
 }

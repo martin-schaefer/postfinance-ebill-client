@@ -12,19 +12,8 @@
 	<properties>
 		<java.version>11</java.version>
 		<cxf.version>3.5.1</cxf.version>
-		<spring.version>5.3.18</spring.version>
 	</properties>
 	<dependencies>
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 		<!-- cxf section -->
 		<dependency>
 			<groupId>org.apache.cxf</groupId>
@@ -51,14 +40,6 @@
 			<artifactId>cxf-rt-ws-policy</artifactId>
 			<version>${cxf.version}</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.wss4j/wss4j -->
-		<!-- 		<dependency>
-            <groupId>org.apache.wss4j</groupId>
-            <artifactId>wss4j</artifactId>
-            <version>1.6.19</version>
-            <type>pom</type>
-        </dependency> -->
-		<!-- https://mvnrepository.com/artifact/org.apache.wss4j/wss4j-ws-security-common -->
 		<dependency>
 			<groupId>org.apache.wss4j</groupId>
 			<artifactId>wss4j-ws-security-common</artifactId>
@@ -66,15 +47,8 @@
 		</dependency>
 		<!-- jaxb -->
 		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-oxm</artifactId>
-			<!-- check the correct spring version -->
-			<version>${spring.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>javax.xml.bind</groupId>
 			<artifactId>jaxb-api</artifactId>
-			<version>2.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.sun.xml.bind</groupId>

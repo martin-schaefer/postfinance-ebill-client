@@ -1,13 +1,12 @@
-package ch.postfinance.ebill.client.IT;
+package ch.postfinance.ebill.client;
 
-import ch.postfinance.ebill.client.EBillClient;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest(properties = { "ebill.client.uri=https://ebill-ki.postfinance.ch/B2BService/B2BService.svc?singleWsdl" })
-public class EBillAutoStartTest {
+@SpringBootTest(properties = { "ebill.client.uri=https://ebill-ki.postfinance.ch/B2BService/B2BService.svc?singleWsdl", "ebill.client.username=someuser", "ebill.client.password=somepw" })
+public class BootStartTest {
 
 	@Autowired
 	private EBillClient eBillClient;
