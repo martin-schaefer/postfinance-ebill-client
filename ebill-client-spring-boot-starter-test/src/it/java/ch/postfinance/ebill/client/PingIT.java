@@ -1,16 +1,15 @@
-package ch.postfinance.ebill.client.IT;
+package ch.postfinance.ebill.client;
 
-import ch.postfinance.ebill.client.EBillClient;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.net.MalformedURLException;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.net.MalformedURLException;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @SpringBootTest(properties = { "ebill.client.uri=https://ebill-ki.postfinance.ch/B2BService/B2BService.svc?singleWsdl" })
-public class PingTest {
+public class PingIT {
 
 	private final String billerID = "41010186990657958";
 

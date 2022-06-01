@@ -16,9 +16,15 @@ public class EBillClientProperties {
 	@NotBlank
 	private String uri;
 
+	/**
+	 * The username for username/password base authentication
+	 */
 	@NotBlank
-	private String userName;
+	private String username;
 
+	/**
+	 * The password for username/password based authentication
+	 */
 	@NotBlank
-	private String passWord;
+	private String password;
 }
